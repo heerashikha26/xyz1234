@@ -11,5 +11,8 @@ export class AddStuentComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  goBack(){
+    location.reload();
+  }
 
 }
