@@ -1,33 +1,39 @@
 <div style="height: 700px;">
-   
     <h1 class="font-bold text-center bg-emerald-100 h-20"> <button class="text-lime-50 float-left bg-cyan-700 pr-5 pl-5 pt-2 pb-2" (click)="goBack()">Back to Home</button>ADD STUDENT</h1>
     <div class="p-10">
         <div class="bg-neutral-300 w-100 grid grid-cols-2 divide-30">
-            <div class="p-20">
+            <div class="p-20" *ngIf="noImage === false">
                 <img class="w-4/5 h-4/5 mx-auto"
-                    src="https://i2.wp.com/rollercoasteryears.com/wp-content/uploads/Thrive-During-Finals-.jpg?fit=1000%2C667&ssl=1"
+                    src="{{localUrl}}"
                     alt="no image">
             </div>
-            <div class="p-20">
-                <div style="margin-bottom: 40px;">
-                    <label>First Name</label>
-                    <input type="text" class="p-5" placeholder="First Name" style="width: 100%;height: 35px;">
-                </div>
-                <div style="margin-bottom: 40px;">
-                    <label>Last Name</label>
-                    <input type="text" class="p-5" placeholder="Last Name" style="width: 100%;height: 35px;">
-                </div>
-                <div style="margin-bottom: 40px;">
-                    <label>Date Of Birth</label>
-                    <input type="date" class="p-5" style="width: 100%;height: 35px;">
-                </div>
-                <div style="margin-bottom: 40px;">
-                    <label>Image Upload</label>
-                    <input type="file" class="p-5" style="width: 100%;height: 35px;">
-                </div>
-                <div>
-                    <button class="text-lime-50 float-right bg-cyan-700 pr-5 pl-5 pt-2 pb-2">Add</button>
-                </div>
+            <div class="p-20" *ngIf="noImage === true">
+                <img class="w-4/5 h-4/5 mx-auto"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
+                    alt="no image">
+            </div>
+            <div class="p-20" >
+                <form [formGroup]="myForm" (ngSubmit)="onAdd()">
+                    <div style="margin-bottom: 40px;">
+                        <label>First Name</label>
+                        <input type="text" class="p-5" placeholder="First Name" style="width: 100%;height: 35px;" formControlName="firstName">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <label>Last Name</label>
+                        <input type="text" class="p-5" placeholder="Last Name" style="width: 100%;height: 35px;" formControlName="lastName">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <label>Date Of Birth</label>
+                        <input type="date" class="p-5" style="width: 100%;height: 35px;" formControlName="dateOfBirth">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <label>Image Upload</label>
+                        <input type="file" class="p-5" style="width: 100%;height: 35px;" formControlName="image" (change)="showPreviewImage($event)">
+                    </div>
+                    <div>
+                        <button type="submit" class="text-lime-50 float-right bg-cyan-700 pr-5 pl-5 pt-2 pb-2" >Add</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

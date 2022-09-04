@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { StudentService } from './student.service';
 import { AddStuentComponent } from './add-stuent/add-stuent.component';
 import { BodyComponent } from './body/body.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditStudentComponent } from './edit-student/edit-student.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +17,13 @@ import { BodyComponent } from './body/body.component';
     HeaderComponent,
     FooterComponent,
     AddStuentComponent,
-    BodyComponent
+    BodyComponent,
+    EditStudentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

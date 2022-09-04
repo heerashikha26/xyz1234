@@ -23,7 +23,7 @@
   </div>
 </div>
 <div class="w-100 h-20" *ngIf="visibleTotalList === false">
-  <app-add-student></app-add-student>
+  <app-add-student (sendToApp)="recivedNewStudent($event)"></app-add-student>
 </div>
 <div class="w-100 h-20 bg-emerald-100" *ngIf="visibleTotalList === true">
   <app-footer></app-footer>
