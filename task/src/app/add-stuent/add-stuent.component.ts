@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-student',
@@ -17,12 +17,18 @@ export class AddStuentComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = new FormGroup({
-      firstName: new FormControl('Bheem'),
-      lastName: new FormControl('Nayak'),
-      dateOfBirth: new FormControl('2022-09-02'),
-      image: new FormControl('')
+      firstName: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z ]*$')]),
+      lastName: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z ]*$')]),
+      dateOfBirth: new FormControl('',[Validators.required]),
+      image: new FormControl('',[Validators.required]),
+      stuId: new FormControl(''),
+      years : new FormControl('11')
     });
   }
+
+  get formAltaControls(): any {
+    return this.myForm['controls'];
+ }
   goBack() {
     location.reload();
   }

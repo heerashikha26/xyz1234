@@ -3,12 +3,12 @@
     <div class="p-10">
         <div class="bg-neutral-300 w-100 grid grid-cols-2 divide-30">
             <div class="p-20" *ngIf="noImage === false">
-                <img class="w-4/5 h-4/5 mx-auto"
+                <img class=" mx-auto" style="width: 360px;height : 360px"
                     src="{{localUrl}}"
                     alt="no image">
             </div>
             <div class="p-20" *ngIf="noImage === true">
-                <img class="w-4/5 h-4/5 mx-auto"
+                <img style="width: 360px;height : 360px" class="mx-auto"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
                     alt="no image">
             </div>
@@ -17,21 +17,25 @@
                     <div style="margin-bottom: 40px;">
                         <label>First Name</label>
                         <input type="text" class="p-5" placeholder="First Name" style="width: 100%;height: 35px;" formControlName="firstName">
+                        <span class="text-red-500" *ngIf="!formAltaControls.firstName.valid && (formAltaControls.firstName.dirty || formAltaControls.firstName.touched)">First name is required(Only Alphabets)*</span>
                     </div>
                     <div style="margin-bottom: 40px;">
                         <label>Last Name</label>
                         <input type="text" class="p-5" placeholder="Last Name" style="width: 100%;height: 35px;" formControlName="lastName">
+                        <span class="text-red-500" *ngIf="!formAltaControls.lastName.valid && (formAltaControls.lastName.dirty || formAltaControls.lastName.touched)">Last name is required(Only Alphabets)*</span>
                     </div>
                     <div style="margin-bottom: 40px;">
                         <label>Date Of Birth</label>
                         <input type="date" class="p-5" style="width: 100%;height: 35px;" formControlName="dateOfBirth">
+                        <span class="text-red-500" *ngIf="!formAltaControls.dateOfBirth.valid && (formAltaControls.dateOfBirth.dirty || formAltaControls.dateOfBirth.touched)">Date of birth is required*</span>
                     </div>
                     <div style="margin-bottom: 40px;">
                         <label>Image Upload</label>
                         <input type="file" class="p-5" style="width: 100%;height: 35px;" formControlName="image" (change)="showPreviewImage($event)">
+                        <span class="text-red-500" *ngIf="!formAltaControls.image.valid && (formAltaControls.image.dirty || formAltaControls.image.touched)">Image is required*</span>
                     </div>
                     <div>
-                        <button type="submit" class="text-lime-50 float-right bg-cyan-700 pr-5 pl-5 pt-2 pb-2" >Add</button>
+                        <button type="submit" class="text-lime-50 float-right bg-cyan-700 pr-5 pl-5 pt-2 pb-2" [disabled]="!myForm.valid">Add</button>
                     </div>
                 </form>
             </div>
